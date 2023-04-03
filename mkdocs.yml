@@ -1,0 +1,31 @@
+site_name: Notas Musicais
+repo_url: https://github.com/victornsleao
+repo_name: victornsleao/
+edit_uri: tree/main/docs
+
+theme:
+  name: material
+  lanaguage: pt-BR
+  logo: assets/logo.png
+  favicon: assets/logo.png
+
+markdown_extensions:
+  - attr_list
+  - admonition
+
+extra_css:
+  - stylesheets/extra.css
+
+watch:
+   - notas_musicais
+
+plugins:
+- macros
+- mkdocstrings:
+    handlers:
+      python:
+        paths: [notas_musicais]
+
+extra:
+  commands:
+    run: notas-musicais

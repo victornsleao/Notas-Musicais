@@ -1,0 +1,24 @@
+name: Pipeline
+on: [push, pull_request]
+
+jobs:
+  test:
+    runs-on: debian-latest
+
+    steps:
+      - name: copiar arquivos
+        uses: actions/checkout@v3
+
+      - name: Instalar python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11.2'
+      
+      - name: Instalar poetry
+        run: pip install poetry
+      
+      - name: Instalar dependências do projeto
+        run: poetry install --without doc
+
+      - name: Rodar os testes
+        run: poetry run task test
